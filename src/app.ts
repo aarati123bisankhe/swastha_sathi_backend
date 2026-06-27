@@ -1,7 +1,9 @@
 import express, { Application,Request, Response } from "express";
 import dotenv from 'dotenv';
 import cors from 'cors';
+import bodyParser from 'body-parser';
 import { HttpError } from "./errors/http-error.ts";
+import authRoutes from "./routes/auth.routes.ts";
 
 dotenv.config();
 console.log(process.env.PORT);
@@ -13,6 +15,9 @@ let corsOptions = {
 }
 
 app.use(cors(corsOptions));
+
+app.use(bodyParser.json());
+app.use('/api/auth', authRoutes);
 
 app.use((err: Error, req: Request, res: Response, next: Function) => {
     if (err instanceof HttpError) {
