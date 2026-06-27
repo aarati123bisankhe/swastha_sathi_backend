@@ -1,0 +1,48 @@
+import bcryptjs from "bcryptjs";
+import jwt from "jsonwebtoken";
+
+import type { CreateUserDto, LoginUserDto } from "../dtos/user.dtos.ts";
+import { HttpError } from "../errors/http-error.ts";
+import { UserRepository } from "../repositories/user.respository.ts";
+import { JWT_SECRET } from "../configs/index.ts";
+
+const userRepository = new UserRepository();
+
+export class UserService {
+  async registerUser(userData: CreateUserDto) {
+    const checkEmail = await userRepository.getUserByEmail(userData.email);
+
+    if (checkEmail) {
+      throw new HttpError(409, "Email already in use");
+    }
+
+    const hashedPassword = await bcryptjs.hash(userData.password, 10);
+
+    const newUser = await userRepository.createUser({
+      ...userData,
+      password: hashedPassword,
+    });
+
+    const { password, ...safeUser } = newUser.toObject();
+
+    return safeUser;
+  }
+
+  async loginUser(loginData: LoginUserDto) {
+        const user = await userRepository.getUserByEmail(loginData.email);
+        if (!user) {
+            throw new HttpError(404, "User not found");
+        }
+        const validPassword = await bcryptjs.compare(loginData.password, user.password);
+        if (!validPassword) {
+            throw new HttpError(401, "Invalid Credential");
+        }
+        const payload = {
+            id: user._id,
+            email: user.email,
+        }
+        const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '30d' })
+        return { token, user }
+    }
+
+}
