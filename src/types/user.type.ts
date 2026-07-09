@@ -7,7 +7,7 @@ export const UserSchema = z.object({
     phonenumber: z.string().min(7),
     district: z.string(),
     bloodgroup: z.string().optional(),
-    profileUrl: z.string().optional(), //profile photo url
+    profileUrl: z.string().optional(), 
 });
 
 export type UserType = z.infer<typeof UserSchema>;
