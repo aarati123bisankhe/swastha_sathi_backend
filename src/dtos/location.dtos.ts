@@ -9,7 +9,7 @@ export const StartLiveLocationDto = z.object({
   address: z.string().trim().min(1),
 });
 
-export type StartLiveLocationDto = z.infer<typeof StartLiveLocationDto>; //dto for starting live location sharing
+export type StartLiveLocationDto = z.infer<typeof StartLiveLocationDto>; 
 
 export const UpdateLiveLocationDto = z.object({
   shareId: z.string().trim().min(1),
