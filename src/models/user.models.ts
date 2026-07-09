@@ -37,7 +37,7 @@ const userMongoSchema: Schema = new Schema(
     bloodGroup: {
       type: String,
       required: false,
-      enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],
+      enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"], //optional field with enum validation
     },
 
     profileUrl: {
