@@ -27,3 +27,10 @@ export type LoginUserDto = z.infer<typeof LoginUserDto>;
 
 export const UpdateUserDto = UserSchema.partial();
 export type UpdateUserDto = z.infer<typeof UpdateUserDto>;
+
+export const UploadProfilePhotoDto = z.object({  //profile photo upload dto
+    fileName: z.string().trim().min(1),
+    mimeType: z.string().trim().min(1),
+    base64Data: z.string().trim().min(1),
+});
+export type UploadProfilePhotoDto = z.infer<typeof UploadProfilePhotoDto>;

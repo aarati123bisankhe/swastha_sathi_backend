@@ -2,6 +2,7 @@ import express, { Application,Request, Response } from "express";
 import dotenv from 'dotenv';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import path from "path";
 import { HttpError } from "./errors/http-error.ts";
 import authRoutes from "./routes/auth.routes.ts";
 import liveLocationRoutes from "./routes/live-location.routes.ts";
@@ -17,7 +18,8 @@ let corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "15mb" }));
+app.use("/uploads", express.static(path.resolve(process.cwd(), "uploads"))); //protect uploads folder from being accessed directly
 app.use('/api/auth', authRoutes);
 app.use('/api/location', liveLocationRoutes);
 
