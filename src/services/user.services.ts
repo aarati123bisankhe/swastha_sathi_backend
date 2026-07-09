@@ -65,7 +65,7 @@ export class UserService {
       const updatedUser = await userRepository.updateUserById(userId, updateData);
 
       if (!updatedUser) {
-        throw new HttpError(500, "Unable to update user profile"); // Handle the case where the update operation fails
+        throw new HttpError(500, "Unable to update user profile"); 
       }
 
       return updatedUser;
