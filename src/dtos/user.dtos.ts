@@ -8,7 +8,7 @@ export const CreateUserDto = UserSchema.pick(
         email: true,
         password: true,
         phonenumber: true,
-        selectdistrict: true,
+        district: true,
         bloodgroup: true,
         profileUrl: true,
     }

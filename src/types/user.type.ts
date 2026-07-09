@@ -4,8 +4,8 @@ export const UserSchema = z.object({
     fullname: z.string(),
     email: z.email(),
     password:z.string().min(6),
-    phonenumber: z.number(),
-    selectdistrict: z.string(),
+    phonenumber: z.string().min(7),
+    district: z.string(),
     bloodgroup: z.string().optional(),
     profileUrl: z.string().optional(),
 });
