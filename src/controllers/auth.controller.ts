@@ -76,7 +76,7 @@ async loginUser(req: Request, res: Response) {
         }
     }
 
-    async uploadProfilePhoto(req: Request, res: Response) { //upload profile photo controller
+    async uploadProfilePhoto(req: Request, res: Response) { 
         try {
             const parsedData = UploadProfilePhotoDto.safeParse(req.body);
             if (!parsedData.success) {
