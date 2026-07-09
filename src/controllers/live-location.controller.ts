@@ -7,7 +7,7 @@ import {
   StopLiveLocationDto,
   UpdateLiveLocationDto,
 } from "../dtos/location.dtos.ts";
-import { LiveLocationService } from "../services/live-location.service.ts"; //live location service
+import { LiveLocationService } from "../services/live-location.service.ts"; 
 
 const liveLocationService = new LiveLocationService();
 
