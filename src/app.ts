@@ -12,7 +12,7 @@ console.log(process.env.PORT);
 const app: Application = express();
 
 let corsOptions = {
-    origin: ["http://localhost:3000"] //http://localhost:3000 is the frontend url
+    origin: ["http://localhost:3000"] 
 }
 
 app.use(cors(corsOptions));
