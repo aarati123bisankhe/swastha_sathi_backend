@@ -25,7 +25,7 @@ export const StopLiveLocationDto = z.object({
 });
 
 export type StopLiveLocationDto = z.infer<typeof StopLiveLocationDto>;
-//loctaion share contact dto
+
 
 export const ShareLiveLocationContactDto = z.object({
   userId: z.string().trim().min(1),
