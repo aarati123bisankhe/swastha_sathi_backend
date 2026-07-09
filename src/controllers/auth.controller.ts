@@ -1,7 +1,7 @@
 import z from "zod";
 import { Request, Response } from "express";
 import { CreateUserDto, LoginUserDto } from "../dtos/user.dtos.ts";
-import { UserService } from "../services/user.services.ts"; //user service import
+import { UserService } from "../services/user.services.ts"; 
 
 let userService = new UserService();
 export class AuthController {
