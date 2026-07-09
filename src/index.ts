@@ -10,7 +10,7 @@ async function startServer(){
     server.listen(
         PORT,
         () =>{
-            console.log(`Server: http://localhost:${PORT}`);
+            console.log(`Server: http://localhost:${PORT}`); //local host
         }
     )
 }
