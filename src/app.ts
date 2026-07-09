@@ -4,6 +4,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import { HttpError } from "./errors/http-error.ts";
 import authRoutes from "./routes/auth.routes.ts";
+import liveLocationRoutes from "./routes/live-location.routes.ts";
 
 dotenv.config();
 console.log(process.env.PORT);
@@ -18,6 +19,7 @@ app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 app.use('/api/auth', authRoutes);
+app.use('/api/location', liveLocationRoutes);
 
 app.use((err: Error, req: Request, res: Response, next: Function) => {
     if (err instanceof HttpError) {
