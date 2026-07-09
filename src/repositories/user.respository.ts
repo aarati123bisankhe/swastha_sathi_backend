@@ -44,7 +44,7 @@ export class UserRepository implements IUserRepository {
             userId,
             userData,
             { new: true }
-        ).select("-password"); //protect password field from being returned
+        ).select("-password"); 
         return user;
     }
 }
