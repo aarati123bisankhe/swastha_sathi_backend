@@ -19,7 +19,7 @@ let corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(bodyParser.json({ limit: "15mb" }));
-app.use("/uploads", express.static(path.resolve(process.cwd(), "uploads"))); //protect uploads folder from being accessed directly
+app.use("/uploads", express.static(path.resolve(process.cwd(), "uploads"))); 
 app.use('/api/auth', authRoutes);
 app.use('/api/location', liveLocationRoutes);
 
